@@ -1,0 +1,30 @@
+<strong>{{currentMonth.name}} {{currentMonth.year}} </strong>
+<table>
+  <thead>
+ 
+  </thead>
+  <tbody>
+  <tr  *ngFor="let week of currentMonth.weeks">    
+    <td>{{week.startingDate | date}}</td>
+    <td *ngFor="let day of week.days">
+      <!--<div class="square" (click)="dayClicked(day);week.calcuateScore()"><img [src]="day.imagePath" /></div>-->
+      
+      <app-square  
+  [SquareSize]="square" [Label]="day.name" [ImagePath]="day.imagePath" [IsFinished]="day.isComplete"
+    (click)=squareClicked(day,week)></app-square>
+  </td>
+      <td><img [ngStyle]="{width:imgWidth, height:imgHeight}" [src]="getWeekImage(week.score)" /></td>
+      <td>score: {{week.score}}</td>
+  </tr>
+</tbody>
+</table>
+<div>
+  Good Days: {{goodDays}}
+</div>
+<div>
+  Bad Days: {{badDays}}
+</div>
+<div>
+  Unallocated Days: {{unallocatedDays}}
+</div>
+<button type="button" (click)="saveMonth()">Update</button>

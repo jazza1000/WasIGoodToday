@@ -1,0 +1,24 @@
+
+<!--
+<app-square  *ngFor="let item of [].constructor(52); let i = index "
+  [SquareSize]="square" [Label]="'Monday'" [ImagePath]="'assets/happy.jpg'" 
+    (click)=squareClicked($event)></app-square>
+
+      <app-square  *ngFor="let item of weeks; let i = index "
+  [SquareSize]="square" [Label]="item.startingDate?.toDateString().slice(0,10)" [ImagePath]="getImage(item.score)"
+  [IsFinished]="item.isComplete" 
+    (click)=squareClicked(item)></app-square>
+    -->
+    <app-year-selector [Years]="years" (yearChanged)="yearChanged($event)"></app-year-selector>
+    <p></p>
+    <app-square  *ngFor="let item of weeks; let i = index "
+    [SquareSize]="square" [Label]="formatDate(item.startingDate)" [ImagePath]="getImage(item.score)"
+    [IsFinished]="item.isComplete" 
+      (click)=squareClicked(item)></app-square>
+
+    <!--
+    <app-square  *ngFor="let item of weeks$ | async "
+  [SquareSize]="square" [Label]="formatDate(item.startingDate)" [ImagePath]="getImage(item.score)"
+  [IsFinished]="item.isComplete" 
+    (click)=squareClicked(item)></app-square>
+    -->

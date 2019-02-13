@@ -1,0 +1,9 @@
+
+
+<app-year-selector [Years]="years" (yearChanged)="yearChanged($event)"></app-year-selector>
+<p></p>
+<app-square  *ngFor="let item of months; let i = index "
+  [SquareSize]="square" [Label]="item.name" [ImagePath]="getImage(item.score)" [IsFinished]="item.isComplete"
+    (click)=squareClicked(item)></app-square>
+
+   

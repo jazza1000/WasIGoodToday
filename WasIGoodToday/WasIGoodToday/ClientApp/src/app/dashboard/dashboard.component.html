@@ -1,0 +1,13 @@
+<button type="button" (click)="navigateTo('/dashboard/yearbymonth')">Year By Month</button>
+<button type="button" (click)="navigateTo('/dashboard/yearbyweek')">Year By Week</button>
+<button type="button" (click)="navigateToMonth('/dashboard/monthview',year, month)">Month By Week</button>
+<div class ="squarecontainer">
+<!--
+<p>
+  dashboard works!
+</p>
+<app-square [SquareSize]="square" [Label]="'Monday'" [ImagePath]="'assets/happy.jpg'" 
+    (click)=squareClicked($event)></app-square>
+-->
+    <router-outlet></router-outlet>
+</div>

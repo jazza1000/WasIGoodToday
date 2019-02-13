@@ -1,0 +1,9 @@
+<div >
+  <label>Select Year:</label>
+  <select (change)="onChange($event)">
+    <option *ngFor="let year of Years" [selected]="currentYear==year" >{{year}}</option>
+    <!--<option>2017</option>
+    <option>2018</option>
+    <option selected="selected">2019</option>-->
+  </select>
+  </div>
