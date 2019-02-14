@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs
+/WasIGoodToday/.vs/WasIGoodToday/v15
+/WasIGoodToday/Data/bin/Debug/netcoreapp2.2
+/WasIGoodToday/Data/obj
+/WasIGoodToday/WasIGoodToday/bin/Debug/netcoreapp2.2
+/WasIGoodToday/WasIGoodToday/ClientApp/node_modules
+/WasIGoodToday/WasIGoodToday/obj
