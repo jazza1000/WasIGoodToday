@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
 namespace WasIGoodToday.Controllers
@@ -14,9 +15,11 @@ namespace WasIGoodToday.Controllers
     public class CalendarController : Controller
     {
         private readonly DataProvider m_DataProvider;
-        public CalendarController()
+        public CalendarController(IConfiguration configuration)
         {
-            IMongoClient client = new MongoClient("mongodb://localhost:27017");
+
+            string connection = configuration.GetConnectionString("wasIgoodConnection");
+            IMongoClient client = new MongoClient(connection);
             m_DataProvider = new DataProvider(client);
         }
         // GET api/<controller>
