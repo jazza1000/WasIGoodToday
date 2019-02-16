@@ -1,7 +1,7 @@
 <strong>{{currentMonth.name}} {{currentMonth.year}} </strong>
 <table>
   <thead>
- 
+  <tr><th>Start Date</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
   </thead>
   <tbody>
   <tr  *ngFor="let week of currentMonth.weeks">    
@@ -18,13 +18,15 @@
   </tr>
 </tbody>
 </table>
-<div>
-  Good Days: {{goodDays}}
-</div>
-<div>
-  Bad Days: {{badDays}}
-</div>
-<div>
-  Unallocated Days: {{unallocatedDays}}
+<div class="summary">
+    <div>
+        Good Days: {{goodDays}}
+    </div>
+    <div>
+        Bad Days: {{badDays}}
+    </div>
+    <div>
+        Unallocated Days: {{unallocatedDays}}
+    </div>
 </div>
 <button type="button" (click)="saveMonth()">Update</button>

@@ -6,3 +6,9 @@ padding: 50px;
 height: 100%;
 width: 90%;
 }
+
+@media only screen and (max-width: 770px) {
+    .squarecontainer {
+        border: none;
+    }
+}

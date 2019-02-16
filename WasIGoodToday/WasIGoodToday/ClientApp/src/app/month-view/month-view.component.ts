@@ -13,7 +13,7 @@ import { DateService } from '../services/date.service';
 @Component({
   selector: 'app-month-view',
   templateUrl: './month-view.component.html',
- // styleUrls: ['./month-view.component.css']
+  styleUrls: ['./month-view.component.css']
 })
 export class MonthViewComponent implements OnInit {
   monthNames = ["January", "February", "March", "April", "May","June","July", "August", "September", "October", "November","December"];
