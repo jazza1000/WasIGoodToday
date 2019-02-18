@@ -183,13 +183,17 @@ export class MonthViewComponent implements OnInit {
               day.imagePath="assets/delete.png";
               break;
           }
+        
+        week.score = week.days.reduce((sum, item) => {
+            sum = sum + item.goodOrNot;
+            return sum;
+        }, 0);
+     }
 
-          week.score++;
-
-
-    }
 
   }
+
+  
 
 
 
