@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
+using WasIGoodToday.Services;
 
 namespace WasIGoodToday.Controllers
 {
@@ -14,49 +15,37 @@ namespace WasIGoodToday.Controllers
     [ApiController]
     public class CalendarController : Controller
     {
-        private readonly DataProvider m_DataProvider;
-        public CalendarController(IConfiguration configuration)
+        private readonly ICalendarService m_CalendarService;
+        public CalendarController(
+            IConfiguration configuration,
+            ICalendarService calendarService)
         {
 
-            string connection = configuration.GetConnectionString("wasIgoodConnection");
-            IMongoClient client = new MongoClient(connection);
-            m_DataProvider = new DataProvider(client);
+            m_CalendarService = calendarService;
         }
-        // GET api/<controller>
-        public IEnumerable<string> Get()
-        {
-            //test a post
-            //Month month = new Month
-            //{
-            //    Name = "October",
-            //    Year = 2018
-            //};
-            //m_DataProvider.UpsertMonth(month);
-            return new string[] { "value1", "value2" };
-        }
+        
 
 
         [HttpGet("{month}/{year}")]
         public async Task<Month> Get(string month, int year)
         {
-            var ret = await m_DataProvider.GetMonth(month, year);
+            var ret = await m_CalendarService.GetMonth(month, year);
             return ret;
         }
       //  [Route("api/calendar/monthsbyyear/{year}")]
         [HttpGet("monthsbyyear/{year}")]
         public async Task<List<Month>> GetMonthsByYear(int year)
         {
-            var ret = await m_DataProvider.GetMonthsByYear(year);
+            var ret = await m_CalendarService.GetMonthsByYear(year);
             return ret;
 
-            //return new List<Month>();
         }
 
        // [Route("api/calendar/weeksbyyear/{year}")]
         [HttpGet("weeksbyyear/{year}")]
         public async Task<List<Week>> GetWeeksByYear(int year)
         {
-            var ret = await m_DataProvider.GetMonthsByYear(year);
+            var ret = await m_CalendarService.GetMonthsByYear(year);
             return ret.SelectMany(x => x.Weeks).ToList();
         }
 
@@ -64,7 +53,7 @@ namespace WasIGoodToday.Controllers
         [HttpPost]
         public async Task Post([FromBody]Month month)
         {
-            await m_DataProvider.UpsertMonth(month);
+            await m_CalendarService.UpsertMonth(month);
         }
 
         // PUT api/<controller>/5
