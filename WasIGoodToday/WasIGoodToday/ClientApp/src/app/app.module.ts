@@ -20,6 +20,7 @@ import { MonthViewComponent } from './month-view/month-view.component';
 import { YearSelectorComponent } from './year-selector/year-selector.component';
 import { DateService } from './services/date.service';
 import { LoginComponent } from './login/login.component';
+import { CreateUserComponent } from '../create-user/create-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { LoginComponent } from './login/login.component';
     YearViewByWeekComponent,
     MonthViewComponent,
     YearSelectorComponent,
-    LoginComponent
+    LoginComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -43,6 +45,7 @@ import { LoginComponent } from './login/login.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
         { path: 'counter', component: CounterComponent },
         { path: 'login', component: LoginComponent },
+        { path: 'create-user', component: CreateUserComponent},
       { path: 'fetch-data', component: FetchDataComponent },
       {
         path: 'dashboard', component: DashboardComponent, children:
