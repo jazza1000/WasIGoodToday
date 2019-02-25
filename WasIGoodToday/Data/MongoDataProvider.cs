@@ -26,20 +26,20 @@ namespace Data
 
         public async Task<List<T>> GetMany(Expression<Func<T, bool>> expression)
         {
-            return await m_Database.GetCollection<T>(nameof(T).ToLower()).Find(expression).ToListAsync();
+            return await m_Database.GetCollection<T>(typeof(T).Name.ToLower()).Find(expression).ToListAsync();
         }
 
         public async Task<T> GetSingle(Expression<Func<T,bool>> expression)
         {
-            var item = await m_Database.GetCollection<T>(nameof(T).ToLower())
+            var item = await m_Database.GetCollection<T>(typeof(T).Name.ToLower())
                 .Find(expression)
-                .SingleOrDefaultAsync();
+                .FirstOrDefaultAsync();
             return item;
         }
 
         public async Task Upsert(T item, Expression<Func<T, bool>> findExisting)
         {
-            var collection = m_Database.GetCollection<T>(nameof(T).ToLower());
+            var collection = m_Database.GetCollection<T>(typeof(T).Name.ToLower());
             var existing = await collection.FindAsync(findExisting);
 
             if (existing.FirstOrDefault() == null)

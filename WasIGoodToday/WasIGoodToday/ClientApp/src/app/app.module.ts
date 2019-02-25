@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -12,6 +12,10 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 import { DatePipe } from '@angular/common';
 import { ApiService } from './services/api.service';
+import { UserService } from './services/user.service';
+import { ApiInterceptor } from './services/api.interceptor';
+
+
 import { SquareComponent } from './square/square.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { YearViewByMonthComponent } from './year-view-by-month/year-view-by-month.component';
@@ -20,7 +24,9 @@ import { MonthViewComponent } from './month-view/month-view.component';
 import { YearSelectorComponent } from './year-selector/year-selector.component';
 import { DateService } from './services/date.service';
 import { LoginComponent } from './login/login.component';
-import { CreateUserComponent } from '../create-user/create-user.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { AuthGuard } from './guards/authentication';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +54,7 @@ import { CreateUserComponent } from '../create-user/create-user.component';
         { path: 'create-user', component: CreateUserComponent},
       { path: 'fetch-data', component: FetchDataComponent },
       {
-        path: 'dashboard', component: DashboardComponent, children:
+          path: 'dashboard', canActivate: [AuthGuard],component: DashboardComponent, children:
           [
             { path: '', redirectTo: 'yearbymonth', pathMatch: 'full' },
           { path: 'yearbymonth', component: YearViewByMonthComponent },
@@ -60,7 +66,17 @@ import { CreateUserComponent } from '../create-user/create-user.component';
       },
     ])
   ],
-  providers: [DatePipe, ApiService, DateService],
+    providers: [
+        DatePipe,
+        ApiService,
+        UserService,
+        DateService,
+        AuthGuard,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ApiInterceptor,
+            multi: true
+        }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

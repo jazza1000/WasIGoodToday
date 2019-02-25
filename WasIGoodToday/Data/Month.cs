@@ -15,5 +15,7 @@ namespace Data
         public string Name { get; set; }
         public int Year { get; set; }
         public List<Week> Weeks { get; set; }
+
+        public string Username { get; set; }
     }
 }

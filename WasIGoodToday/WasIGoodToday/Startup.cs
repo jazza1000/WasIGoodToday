@@ -24,6 +24,7 @@ namespace WasIGoodToday
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSingleton<IConfiguration>(Configuration); //used for connection string
             services.AddSingleton<ICalendarService, CalendarService>();
+            services.AddSingleton<IUserService, UserService>();
             
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

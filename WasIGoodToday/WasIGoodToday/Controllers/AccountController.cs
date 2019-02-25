@@ -8,12 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using WasIGoodToday.Services;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace WasIGoodToday.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountController : Controller
     {
         private readonly IUserService m_UserService;
         public AccountController(IConfiguration configuration, IUserService userService)
@@ -22,18 +23,18 @@ namespace WasIGoodToday.Controllers
             m_UserService = userService;
         }
 
-        [HttpPost]
-        public async Task<User> Post (string userName, string password)
+        [HttpPost("create")]
+        public async Task<User> Post([FromBody] User user)
         {
             //save user to database with hashed password
-            return await m_UserService.CreateUser(userName, password);
+            return await m_UserService.CreateUser(user.UserName, user.Password);
         }
 
 
-        [HttpPost("Authenticate")] //should this also be post??
-        public async Task<bool> Authenticate (string userName, string password)
+        [HttpPost("authenticate")]
+        public async Task<bool> Authenticate([FromBody]User user)
         {
-            return await m_UserService.Authenticate(userName, password);
+            return await m_UserService.Authenticate(user.UserName, user.Password);
         }
     }
 }

@@ -19,7 +19,9 @@ namespace WasIGoodToday.Services
 
         public async Task<bool> Authenticate(string userName, string password)
         {
-            return true;
+            
+            User user = await m_DataProvider.GetSingle(x => x.UserName == userName && x.Password==password);
+            return user!=null;
         }
 
         public async Task<User> CreateUser(string userName, string password)

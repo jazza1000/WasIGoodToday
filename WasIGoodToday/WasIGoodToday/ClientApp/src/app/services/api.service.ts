@@ -16,17 +16,12 @@ export class ApiService {
   }
   saveMonth(month: month) {
 
-    let headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
-    headers = headers.append('Content-Type', 'application/json');
-    this._http.post(this.baseUrl + "api/calendar", JSON.stringify(month), { headers: headers }).subscribe();
+    this._http.post(this.baseUrl + "api/calendar", JSON.stringify(month)).subscribe();
   }
 
-  //todo create http interceptor and always add headers in there
+  
   getMonthsByYear(year: number): Observable<month[]> {
     let url = `${this.baseUrl}api/calendar/monthsbyyear/${year}`;
-    let headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
     return this._http.get(url).pipe(map(
       x => {
         console.log(x);        
@@ -36,8 +31,6 @@ export class ApiService {
 
   getWeeksByYear(year: number): Observable<week[]> {
     let url = `${this.baseUrl}api/calendar/weeksbyyear/${year}`;
-    let headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
     return this._http.get(url).pipe(map(
       x => {
         console.log('in getweeks by year')
@@ -55,8 +48,6 @@ export class ApiService {
 
     let url = `${this.baseUrl}api/calendar/${datemonth}/${year}`;
 
-    let headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
     return this._http.get(url).pipe(map(
       (x: any) => {
         console.log(x);

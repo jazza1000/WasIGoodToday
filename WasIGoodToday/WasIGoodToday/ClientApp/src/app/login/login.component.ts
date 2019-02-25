@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../model/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,9 @@ export class LoginComponent implements OnInit {
     logedInUserName: string;
     department: string;
     constructor(private route: ActivatedRoute,
-        private router: Router) { }
+        private router: Router,
+        private userService: UserService
+    ) { }
 
     ngOnInit() {
         // get return url from route parameters or default to '/'
@@ -44,11 +48,11 @@ export class LoginComponent implements OnInit {
           return;
       }
 
-
-      //this._userService.checkLogin(username, password).subscribe(usr => this.checkUser(usr));
+      let user: User = { userName: username, password: password };
+      this.userService.checkUser(user).subscribe(usr => this.checkUser(usr));
 
   }
-  checkUser(user: any) {  //TODO change type back to User
+  checkUser(user: User) {  
       if (!user) {
           this.userNotFound = true;
           return;

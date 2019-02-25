@@ -27,11 +27,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\guards\authentication.ts" />
     <None Remove="ClientApp\src\app\model\month.ts" />
+    <None Remove="ClientApp\src\app\model\user.ts" />
     <None Remove="ClientApp\src\app\model\week.ts" />
     <None Remove="ClientApp\src\app\model\weekday.ts" />
+    <None Remove="ClientApp\src\app\services\api.interceptor.ts" />
     <None Remove="ClientApp\src\app\services\api.service.ts" />
     <None Remove="ClientApp\src\app\services\date.service.ts" />
+    <None Remove="ClientApp\src\app\services\user.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,11 +43,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\guards\authentication.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\month.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\user.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\week.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\weekday.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\api.interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\api.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\date.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\user.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
