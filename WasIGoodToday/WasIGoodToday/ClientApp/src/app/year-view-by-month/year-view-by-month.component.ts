@@ -97,18 +97,18 @@ public months: month[]=[];
 
   private getDefaultMonths(year:number):month[]{
     return [
-      {name:"January",year:year,weeks:[],score:0, isComplete:false},
-      {name:"February",year:year,weeks:[],score:0, isComplete:false},
-      {name:"March",year:year,weeks:[],score:0, isComplete:false},
-      {name:"April",year:year,weeks:[],score:0, isComplete:false},
-      {name:"May",year:year,weeks:[],score:0, isComplete:false},
-      {name:"June",year:year,weeks:[],score:0, isComplete:false},
-      {name:"July",year:year,weeks:[],score:0, isComplete:false},
-      {name:"August",year:year,weeks:[],score:0, isComplete:false},
-      {name:"September",year:year,weeks:[],score:0, isComplete:false},
-      {name:"October",year:year,weeks:[],score:0, isComplete:false},
-      {name:"November",year:year,weeks:[],score:0, isComplete:false},
-      {name:"December",year:year,weeks:[],score:0, isComplete:false},
+      {name:"January",year:year,weeks:[],score:0, isComplete:false, username:""},
+        { name: "February", year: year, weeks: [], score: 0, isComplete: false, username: ""},
+        { name: "March", year: year, weeks: [], score: 0, isComplete: false, username: ""},
+        { name: "April", year: year, weeks: [], score: 0, isComplete: false, username: ""},
+        { name: "May", year: year, weeks: [], score: 0, isComplete: false, username: ""},
+        { name: "June", year: year, weeks: [], score: 0, isComplete: false, username: ""},
+        { name: "July", year: year, weeks: [], score: 0, isComplete: false, username: ""},
+        { name: "August", year: year, weeks: [], score: 0, isComplete: false, username: ""},
+        { name: "September", year: year, weeks: [], score: 0, isComplete: false, username: ""},
+        { name: "October", year: year, weeks: [], score: 0, isComplete: false, username: ""},
+        { name: "November", year: year, weeks: [], score: 0, isComplete: false, username: ""},
+        { name: "December", year: year, weeks: [], score: 0, isComplete: false, username: ""},
     ]
 
   }
