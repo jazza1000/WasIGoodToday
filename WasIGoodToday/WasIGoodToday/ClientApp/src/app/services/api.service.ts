@@ -5,23 +5,29 @@ import { month } from "../model/month";
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { week } from "../model/week";
+import { UserService } from "./user.service";
 
 
 
 @Injectable()
 export class ApiService {
  
-  constructor(private _http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+    constructor(private _http: HttpClient, @Inject('BASE_URL') private baseUrl: string,
+            private userService: UserService
+        ) {
 
   }
   saveMonth(month: month) {
+    
+      month.username = this.getUserName();
 
     this._http.post(this.baseUrl + "api/calendar", JSON.stringify(month)).subscribe();
   }
 
   
-  getMonthsByYear(year: number): Observable<month[]> {
-    let url = `${this.baseUrl}api/calendar/monthsbyyear/${year}`;
+    getMonthsByYear(year: number): Observable<month[]> {
+        let user = this.getUserName();
+    let url = `${this.baseUrl}api/calendar/monthsbyyear/${user}/${year}`;
     return this._http.get(url).pipe(map(
       x => {
         console.log(x);        
@@ -29,8 +35,9 @@ export class ApiService {
       }));
   }
 
-  getWeeksByYear(year: number): Observable<week[]> {
-    let url = `${this.baseUrl}api/calendar/weeksbyyear/${year}`;
+    getWeeksByYear(year: number): Observable<week[]> {
+      let user = this.getUserName();
+      let url = `${this.baseUrl}api/calendar/weeksbyyear/${user}/${year}`;
     return this._http.get(url).pipe(map(
       x => {
         console.log('in getweeks by year')
@@ -45,8 +52,8 @@ export class ApiService {
 
   getMonth(datemonth: string, year: number): Observable<month> {
     // var month: month;
-
-    let url = `${this.baseUrl}api/calendar/${datemonth}/${year}`;
+    let user = this.getUserName();
+      let url = `${this.baseUrl}api/calendar/${user}/${datemonth}/${year}`;
 
     return this._http.get(url).pipe(map(
       (x: any) => {
@@ -72,5 +79,11 @@ export class ApiService {
       }
     ))
 
-  }
+
+    }
+
+    private getUserName(): string{
+        let user = this.userService.getAuthenticatedUser();
+        return user.userName;
+    }
 }

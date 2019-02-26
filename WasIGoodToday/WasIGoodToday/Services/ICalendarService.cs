@@ -8,8 +8,8 @@ namespace WasIGoodToday.Services
 {
     public interface ICalendarService
     {
-        Task<List<Month>> GetMonthsByYear(int year);
-        Task<Month> GetMonth(string name, int year);
+        Task<List<Month>> GetMonthsByYear(string user, int year);
+        Task<Month> GetMonth(string user, string name, int year);
         Task UpsertMonth(Month month);
     }
 }

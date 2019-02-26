@@ -26,26 +26,26 @@ namespace WasIGoodToday.Controllers
         
 
 
-        [HttpGet("{month}/{year}")]
-        public async Task<Month> Get(string month, int year)
+        [HttpGet("{user}/{month}/{year}")]
+        public async Task<Month> Get(string user,string month, int year)
         {
-            var ret = await m_CalendarService.GetMonth(month, year);
+            var ret = await m_CalendarService.GetMonth(user,month, year);
             return ret;
         }
       //  [Route("api/calendar/monthsbyyear/{year}")]
-        [HttpGet("monthsbyyear/{year}")]
-        public async Task<List<Month>> GetMonthsByYear(int year)
+        [HttpGet("monthsbyyear/{user}/{year}")]
+        public async Task<List<Month>> GetMonthsByYear(string user, int year)
         {
-            var ret = await m_CalendarService.GetMonthsByYear(year);
+            var ret = await m_CalendarService.GetMonthsByYear(user,year);
             return ret;
 
         }
 
        // [Route("api/calendar/weeksbyyear/{year}")]
-        [HttpGet("weeksbyyear/{year}")]
-        public async Task<List<Week>> GetWeeksByYear(int year)
+        [HttpGet("weeksbyyear/{user}/{year}")]
+        public async Task<List<Week>> GetWeeksByYear(string user, int year)
         {
-            var ret = await m_CalendarService.GetMonthsByYear(year);
+            var ret = await m_CalendarService.GetMonthsByYear(user, year);
             return ret.SelectMany(x => x.Weeks).ToList();
         }
 

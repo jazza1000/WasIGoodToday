@@ -7,6 +7,7 @@ export class month {
   weeks: week[] = [];
   score: number;
   isComplete: boolean;
+  username: string;
   constructor() {
 
   }

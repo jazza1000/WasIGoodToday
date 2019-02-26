@@ -17,19 +17,19 @@ namespace WasIGoodToday.Services
             m_DataProvider = new MongoDataProvider<Month>(connection);
         }
 
-        public async Task<Month> GetMonth(string name, int year)
+        public async Task<Month> GetMonth(string user, string name, int year)
         {
-            return await m_DataProvider.GetSingle(x => x.Name.ToLower() == name.ToLower() && x.Year == year);
+            return await m_DataProvider.GetSingle(x => x.Name.ToLower() == name.ToLower() && x.Year == year && x.Username==user);
         }
 
-        public async Task<List<Month>> GetMonthsByYear(int year)
+        public async Task<List<Month>> GetMonthsByYear(string user, int year)
         {
-            return await m_DataProvider.GetMany(x => x.Year == year);
+            return await m_DataProvider.GetMany(x => x.Year == year && x.Username == user);
         }
 
         public async Task UpsertMonth(Month month)
         {
-            await m_DataProvider.Upsert(month, x => x.Year == month.Year && x.Name == month.Name);
+            await m_DataProvider.Upsert(month, x => x.Year == month.Year && x.Name == month.Name );
         }
     }
 }
