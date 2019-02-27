@@ -27,5 +27,8 @@ export class NavMenuComponent implements OnInit{
 
   toggle() {
     this.isExpanded = !this.isExpanded;
-  }
+    }
+    signOut() {
+        alert("sign out!");
+    }
 }

@@ -8,13 +8,15 @@
       </button>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
           <ul class="navbar-nav flex-grow">
-              <li class="nav-item"><span *ngIf="user$ |async as usr">Hello {{(usr)?.userName}}</span></li>
+              <li class="nav-item"><span *ngIf="user$ |async as usr else noUser">Hello {{(usr)?.userName}} <a (click)="signOut()">Sign Out</a></span></li>
               <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
                   <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
               </li>
-              <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-                  <a class="nav-link text-dark" [routerLink]='["/login"]'>Login</a>
-              </li>
+              <ng-template #noUser>
+                  <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+                      <a class="nav-link text-dark" [routerLink]='["/login"]'>Login</a>
+                  </li>
+              </ng-template>
               <!-- <li class="nav-item" [routerLinkActive]='["link-active"]'>
       <a class="nav-link text-dark" [routerLink]='["/counter"]'>Counter</a>
     </li>
