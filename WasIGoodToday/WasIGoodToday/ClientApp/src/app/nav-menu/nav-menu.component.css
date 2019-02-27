@@ -2,8 +2,19 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  
+}
+.login {
+    color: blue;
 }
 
+.login a{
+    text-decoration:underline;
+    cursor: pointer;
+}
+.login .nav-link{
+    text-decoration:none;
+}
 html {
   font-size: 14px;
 }

@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
     userNotFound: boolean;
     logedInUserName: string;
     department: string;
+    username: string;
+    password: string;
     constructor(private route: ActivatedRoute,
         private router: Router,
         private userService: UserService

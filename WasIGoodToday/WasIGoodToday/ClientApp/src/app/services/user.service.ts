@@ -42,4 +42,10 @@ export class UserService {
                 })
             );
     }
+
+    signOut() {
+        this.currentUser = null;
+        this.userSubject$.next(null);
+    }
+
 }

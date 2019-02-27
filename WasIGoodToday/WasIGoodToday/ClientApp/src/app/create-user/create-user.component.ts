@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
-
+    username: string;
+    password: string;
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {

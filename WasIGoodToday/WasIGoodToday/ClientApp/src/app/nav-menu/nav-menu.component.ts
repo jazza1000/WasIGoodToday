@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-menu',
@@ -11,7 +12,7 @@ import { User } from '../model/user';
 export class NavMenuComponent implements OnInit{
     user$: Observable<User>;
   isExpanded = false;
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService, private router: Router) {
         //TODO get auth user as a subject and login
     }
 
@@ -29,6 +30,8 @@ export class NavMenuComponent implements OnInit{
     this.isExpanded = !this.isExpanded;
     }
     signOut() {
-        alert("sign out!");
+        this.userService.signOut();
+        this.router.navigate(['login']);
+
     }
 }
