@@ -166,8 +166,29 @@ export class MonthViewComponent implements OnInit {
     saveMonth(){
       this.apiService.saveMonth(this.currentMonth);
     }
-    squareClicked(day:weekday, week:week){
-      
+
+    updateTotals(day: weekday) {
+        switch (day.goodOrNot) {
+
+            case -1://bad to unalloc
+                this.badDays--;
+                this.unallocatedDays++;
+                break;
+            case 0://unalloc to good
+                this.goodDays++;   
+                this.unallocatedDays--;
+                break;
+            case 1: //good to bad
+                this.goodDays--;
+                this.badDays++;
+                
+                break;
+        }
+    }
+
+    squareClicked(day: weekday, week: week) {
+
+        this.updateTotals(day);
       day.goodOrNot++;
           if (day.goodOrNot==2) day.goodOrNot=-1;
       

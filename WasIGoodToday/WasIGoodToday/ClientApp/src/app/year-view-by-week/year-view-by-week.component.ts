@@ -4,7 +4,7 @@ import { week } from '../model/week';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from '../services/api.service';
-import { forEach } from '@angular/router/src/utils/collection';
+//import { forEach } from '@angular/router/src/utils/collection';
 import { DateService } from '../services/date.service';
 
 @Component({
