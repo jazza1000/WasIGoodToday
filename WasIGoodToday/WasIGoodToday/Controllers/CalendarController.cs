@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Model;
 using MongoDB.Driver;
 using WasIGoodToday.Services;
 
@@ -22,6 +22,20 @@ namespace WasIGoodToday.Controllers
         {
 
             m_CalendarService = calendarService;
+        }
+
+        //this needs to go into its own controller
+        [HttpGet("{user}/statistics")]
+        public async Task<Statistics> GatherStatistics()
+        {
+            //need to pull a ll of the days into a list
+            return new Statistics
+            {
+                CurrentRunOfBadDays = 0,
+                CurrentRunOfGoodDays = 4,
+                LongestRunOfBadDays = 5,
+                LongestRunOfGoodDays = 7
+            };
         }
         
 

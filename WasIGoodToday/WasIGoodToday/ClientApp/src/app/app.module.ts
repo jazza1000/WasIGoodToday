@@ -26,6 +26,7 @@ import { DateService } from './services/date.service';
 import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { AuthGuard } from './guards/authentication';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AuthGuard } from './guards/authentication';
     MonthViewComponent,
     YearSelectorComponent,
     LoginComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -51,7 +53,8 @@ import { AuthGuard } from './guards/authentication';
       { path: '', component: HomeComponent, pathMatch: 'full' },
         { path: 'counter', component: CounterComponent },
         { path: 'login', component: LoginComponent },
-        { path: 'create-user', component: CreateUserComponent},
+        { path: 'create-user', component: CreateUserComponent },
+        {path: 'statistics', component: StatisticsComponent},
       { path: 'fetch-data', component: FetchDataComponent },
       {
           path: 'dashboard', canActivate: [AuthGuard],component: DashboardComponent, children:

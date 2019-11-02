@@ -1,3 +1,4 @@
+using Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +26,7 @@ namespace WasIGoodToday
             services.AddSingleton<IConfiguration>(Configuration); //used for connection string
             services.AddSingleton<ICalendarService, CalendarService>();
             services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<IDataProviderFactory, DataProviderFactory>();
             
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

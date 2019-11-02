@@ -11,10 +11,10 @@ namespace WasIGoodToday.Services
     {
         private readonly MongoDataProvider<User> m_DataProvider;
 
-        public UserService(IConfiguration configuration)
+        public UserService(IConfiguration configuration, IDataProviderFactory dataProviderFactory)
         {
             string connection = configuration.GetConnectionString("wasIgoodConnection");
-            m_DataProvider = new MongoDataProvider<User>(connection);
+            m_DataProvider = dataProviderFactory.GetDataProvider<User>(connection);
         }
 
         public async Task<bool> Authenticate(string userName, string password)

@@ -11,7 +11,7 @@
                             <a (click)="signOut()">Sign Out</a></span></li></ul>
           
           <ul class="navbar-nav flex-grow">
-              
+
               <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
                   <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
               </li>
@@ -20,14 +20,12 @@
                       <a class="nav-link text-dark" [routerLink]='["/login"]'>Login</a>
                   </li>
               </ng-template>
-              <!-- <li class="nav-item" [routerLinkActive]='["link-active"]'>
-      <a class="nav-link text-dark" [routerLink]='["/counter"]'>Counter</a>
-    </li>
-    <li class="nav-item" [routerLinkActive]='["link-active"]'>
-      <a class="nav-link text-dark" [routerLink]='["/fetch-data"]'>Fetch data</a>
-    </li>-->
+
               <li class="nav-item" [routerLinkActive]='["link-active"]'>
                   <a class="nav-link text-dark" [routerLink]='["/dashboard"]'>Dashboard</a>
+              </li>
+              <li class="nav-item" [routerLinkActive]='["link-active"]'>
+                  <a class="nav-link text-dark" [routerLink]='["/statistics"]'>Statistics</a>
               </li>
           </ul>
       </div>
