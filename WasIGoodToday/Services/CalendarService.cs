@@ -1,18 +1,10 @@
-﻿using Model;
+﻿using Data;
 using Microsoft.Extensions.Configuration;
-using System;
+using Services;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Data;
 using MonthData = Data.Month;
 using MonthDomain = Model.Month;
-using WeekData = Data.Week;
-using WeekDomain = Model.Week;
-
-using DayData = Data.Day;
-using DayDomain = Model.Day;
-using Services;
 
 namespace WasIGoodToday.Services
 {

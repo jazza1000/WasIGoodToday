@@ -14,3 +14,8 @@
 /WasIGoodToday/WasIGoodToday/ClientApp/dist
 /WasIGoodToday/WasIGoodToday/Properties/PublishProfiles
 /WasIGoodToday/.vs/WasIGoodToday/DesignTimeBuild
+/WasIGoodToday/Model/bin
+/WasIGoodToday/Model/obj
+/WasIGoodToday/Services/bin
+/WasIGoodToday/Services/obj
+

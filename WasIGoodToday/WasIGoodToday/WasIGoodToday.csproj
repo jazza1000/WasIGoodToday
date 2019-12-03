@@ -29,6 +29,7 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\guards\authentication.ts" />
     <None Remove="ClientApp\src\app\model\month.ts" />
+    <None Remove="ClientApp\src\app\model\statistics.ts" />
     <None Remove="ClientApp\src\app\model\user.ts" />
     <None Remove="ClientApp\src\app\model\week.ts" />
     <None Remove="ClientApp\src\app\model\weekday.ts" />
@@ -46,6 +47,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\guards\authentication.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\month.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\statistics.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\user.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\week.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\weekday.ts" />

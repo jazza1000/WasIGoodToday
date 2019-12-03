@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { statistics } from '../model/statistics';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-statistics',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent implements OnInit {
+    statistics$: Observable<statistics> = this.apiService.getStatistics();
+  constructor(private apiService: ApiService) { }
 
-  constructor() { }
+    ngOnInit() {
+      //  let statistics$ = this.apiService.getStatistics();
+        
+        
+    }
 
-  ngOnInit() {
-  }
+    fetch() {
+        this.statistics$ = this.apiService.getStatistics();
+    }
 
 }

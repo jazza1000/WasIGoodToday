@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { week } from "../model/week";
 import { UserService } from "./user.service";
+import { statistics } from "../model/statistics";
 
 
 
@@ -16,7 +17,18 @@ export class ApiService {
             private userService: UserService
         ) {
 
-  }
+    }
+    getStatistics() {
+        let user = this.getUserName();
+        let url = `${this.baseUrl}api/calendar/${user}/statistics`;
+      //  let url = `${this.baseUrl}api/calendar/statistics/bob`;
+        return this._http.get(url).pipe(map(
+            x => {
+                console.log(x);
+                return <statistics>x;
+            }));
+    }
+
   saveMonth(month: month) {
     
       month.username = this.getUserName();
@@ -84,6 +96,7 @@ export class ApiService {
 
     private getUserName(): string{
         let user = this.userService.getAuthenticatedUser();
+        console.log(user);
         return user.userName;
     }
 }

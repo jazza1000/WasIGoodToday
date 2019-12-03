@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Model;
 using MongoDB.Driver;
+using Services;
 using WasIGoodToday.Services;
 
 namespace WasIGoodToday.Controllers
@@ -16,25 +17,30 @@ namespace WasIGoodToday.Controllers
     public class CalendarController : Controller
     {
         private readonly ICalendarService m_CalendarService;
+        private readonly IStatisticsService m_StatisticsService;
+
         public CalendarController(
             IConfiguration configuration,
-            ICalendarService calendarService)
+            ICalendarService calendarService,
+            IStatisticsService statisticsService)
         {
 
             m_CalendarService = calendarService;
+            m_StatisticsService = statisticsService;
         }
 
         //this needs to go into its own controller
         [HttpGet("{user}/statistics")]
-        public async Task<Statistics> GatherStatistics()
+        public async Task<Statistics> GatherStatistics(string user)
         {
+            var statistics = await m_StatisticsService.GetStatistics(user);
             //need to pull a ll of the days into a list
             return new Statistics
             {
-                CurrentRunOfBadDays = 0,
-                CurrentRunOfGoodDays = 4,
-                LongestRunOfBadDays = 5,
-                LongestRunOfGoodDays = 7
+                CurrentRunOfBadDays = statistics.CurrentRunOfBadDays,
+                CurrentRunOfGoodDays = statistics.CurrentRunOfGoodDays,
+                LongestRunOfBadDays = statistics.LongestRunOfBadDays,
+                LongestRunOfGoodDays = statistics.LongestRunOfGoodDays
             };
         }
         

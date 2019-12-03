@@ -62,7 +62,7 @@ export class MonthViewComponent implements OnInit {
         //otherwise populate a new one
         if (x)
           this.currentMonth = x;
-
+ 
 
 
         //explanation of this code:

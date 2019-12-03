@@ -4,7 +4,9 @@ import { User } from "../model/user";
 import { map } from "rxjs/operators";
 import { ReplaySubject } from "rxjs";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class UserService {
     private currentUser: User;
     private userSubject$= new ReplaySubject<User>();

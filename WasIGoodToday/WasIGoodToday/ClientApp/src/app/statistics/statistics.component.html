@@ -1,1 +1,6 @@
-<p>statistics works!</p>
+<div>
+    <p>Longest Run Of Good Days: {{(statistics$ | async)?.longestRunOfGoodDays}}</p>
+    <p>Longest Run Of Bad Days: {{(statistics$ | async)?.longestRunOfBadDays}}</p>
+    <p>Current Run Of Good Days: {{(statistics$ | async)?.currentRunOfGoodDays}}</p>
+    <p>Current Run Of Bad Days: {{(statistics$ | async)?.currentRunOfBadDays}}</p>
+</div>
