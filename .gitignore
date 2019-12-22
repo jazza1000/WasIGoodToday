@@ -18,4 +18,9 @@
 /WasIGoodToday/Model/obj
 /WasIGoodToday/Services/bin
 /WasIGoodToday/Services/obj
-
+/WasIGoodToday/Model/obj/*
+bin
+obj
+*.cache
+*.dll
+*.pdb

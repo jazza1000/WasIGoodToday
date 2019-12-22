@@ -11,7 +11,8 @@ export class SquareComponent implements OnInit {
   @Input() SquareSize: SquareSize; 
   @Input() Label: string;
   @Input() ImagePath : string;
-  @Input() IsFinished : boolean;
+  @Input() IsFinished: boolean;
+  @Input() IsToday: boolean;
 
   @Output()
   click : EventEmitter<string> = new EventEmitter<string>();
@@ -22,16 +23,24 @@ export class SquareComponent implements OnInit {
     
   }
 
-  getSquareCSS():string{
-    let finished = (this.IsFinished) ? " finished" : " unfinished";
-    if (this.SquareSize==SquareSize.Big)
-      return "bigsquare" + finished;
+    getSquareCSS(): string{
+    let css = "";
+    
+    css += (this.IsFinished) ? " finished" : " unfinished";
+
+    css += (this.IsToday) ? " highlight" : "";
+
+    //could also make this a ternary expression
+    if (this.SquareSize == SquareSize.Big)
+      css+= " bigsquare";
     else if (this.SquareSize==SquareSize.Small)
-      return "smallsquare" + finished;
+      css+= " smallsquare";
     else { 
       console.log("unexpected value for squareSize");
       return "";
-    }
+        }
+     console.log(css);
+     return css;
   }
   onclick(event: Event){
     event.stopPropagation();

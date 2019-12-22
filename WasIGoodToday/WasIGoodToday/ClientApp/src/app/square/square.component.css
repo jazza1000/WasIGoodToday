@@ -6,6 +6,12 @@
     border: solid black 1px;
 }
 
+.highlight {
+    /* background-color: rgba(255,255,255,0.5);*/
+   /* border: solid black 3px;*/
+   background-color: aqua;
+}
+
 .bigsquare {
   /*  border: solid black 1px;*/
     width: 100px; 

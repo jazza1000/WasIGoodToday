@@ -32,6 +32,16 @@ export class MonthViewComponent implements OnInit {
               private apiService: ApiService,
               private dateService: DateService) { }
 
+    isToday(startDate: Date, day: number): boolean {
+        console.log(startDate);
+        console.log(day);
+        const todaysDate = new Date();
+        let compareDate = new Date(startDate);
+        compareDate.setDate(compareDate.getDate() + day);
+        console.log("comp date: " + compareDate);
+        console.log("today: " + todaysDate);
+        return compareDate.setHours(0,0,0,0)==todaysDate.setHours(0,0,0,0);
+    }
   ngOnInit() {
   
 

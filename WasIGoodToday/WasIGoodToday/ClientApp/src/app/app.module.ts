@@ -50,12 +50,12 @@ import { StatisticsComponent } from './statistics/statistics.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+        { path: '', canActivate: [AuthGuard],component: HomeComponent, pathMatch: 'full' },
         { path: 'counter', component: CounterComponent },
         { path: 'login', component: LoginComponent },
         { path: 'create-user', component: CreateUserComponent },
-        {path: 'statistics', component: StatisticsComponent},
-      { path: 'fetch-data', component: FetchDataComponent },
+        { path: 'statistics', canActivate: [AuthGuard], component: StatisticsComponent},
+        { path: 'fetch-data', canActivate: [AuthGuard],component: FetchDataComponent },
       {
           path: 'dashboard', canActivate: [AuthGuard],component: DashboardComponent, children:
           [

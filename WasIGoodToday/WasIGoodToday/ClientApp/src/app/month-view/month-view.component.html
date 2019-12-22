@@ -6,11 +6,12 @@
   <tbody>
   <tr  *ngFor="let week of currentMonth.weeks">    
     <td>{{week.startingDate | date}}</td>
-    <td *ngFor="let day of week.days">
+    <td *ngFor="let day of week.days; let d= index">
       <!--<div class="square" (click)="dayClicked(day);week.calcuateScore()"><img [src]="day.imagePath" /></div>-->
       
       <app-square  
   [SquareSize]="square" [Label]="day.name" [ImagePath]="day.imagePath" [IsFinished]="day.isComplete"
+                  [IsToday]="isToday(week.startingDate, d)"
     (click)=squareClicked(day,week)></app-square>
   </td>
       <td><img [ngStyle]="{width:imgWidth, height:imgHeight}" [src]="getWeekImage(week.score)" /></td>

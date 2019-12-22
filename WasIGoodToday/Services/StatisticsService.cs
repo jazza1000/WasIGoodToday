@@ -28,8 +28,17 @@ namespace Services
 
             List<MonthData> months = await m_DataProvider.GetMany(x => x.Username == user);
             var domainMonths = months.Select(x => x.ToDomain());
-            var domainDays = months.SelectMany(x => x.Weeks).SelectMany(w => w.Days);
-            int i = 0;
+            
+            //need to prune days that are later than the currentdate
+            var domainWeeks = months.SelectMany(x => x.Weeks);
+            //to do this we need to extract a ew object for each day, and project the date
+            //into the new object, because date is only recorded for each week
+            //the Select with index parameter helps here
+            var domainDays = domainWeeks.SelectMany(w => w.Days.Select(
+                (d, i) => new { Date = w.StartingDate.AddDays(i), GoodOrNot = d.GoodOrNot }))
+                .Where(x => x.Date < DateTime.Now)
+                .OrderBy(x => x.Date); ;
+         
             var good = domainDays.Aggregate(
                 new { Longest = 0, Current = 0 },
                 (x, y) => y.GoodOrNot > 0
