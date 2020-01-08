@@ -30,7 +30,7 @@ public months: month[]=[];
 // ];
   
   public square: SquareSize;
-  public years: number[] =[2017,2018,2019];
+  public years: number[] =[2017,2018,2019,2020,2021];
   private months$: Observable<month[]>;
   constructor(private router: Router, private apiService: ApiService) { }
 
