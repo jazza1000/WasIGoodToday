@@ -15,7 +15,7 @@ import { DateService } from '../services/date.service';
 export class YearViewByWeekComponent implements OnInit {
   public square:SquareSize;
   private weeks$:Observable<week[]>;
- public years: number[] =[2017,2018,2019];
+ public years: number[] =[2017,2018,2019,2020,2021];
   public weeks: week[]=
   [
     {"weekNumber":1,"days":[],"score":2,"startingDate": new Date(2018,0,1), "isComplete": true},

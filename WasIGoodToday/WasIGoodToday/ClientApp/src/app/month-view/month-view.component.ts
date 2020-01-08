@@ -4,7 +4,7 @@ import { week } from '../model/week';
 import { weekday } from '../model/weekday';
 import { month } from '../model/month';
 import { SquareSize } from '../square/enums';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { isNgTemplate } from '@angular/compiler';
 import { DateService } from '../services/date.service';
@@ -30,7 +30,8 @@ export class MonthViewComponent implements OnInit {
   currentMonth:month;
   constructor(private route: ActivatedRoute, 
               private apiService: ApiService,
-              private dateService: DateService) { }
+               private dateService: DateService,
+               private router: Router) { }
 
     isToday(startDate: Date, day: number): boolean {
         console.log(startDate);
@@ -221,7 +222,29 @@ export class MonthViewComponent implements OnInit {
         }, 0);
      }
 
+    nextMonth() {
+        let month = parseInt(this.route.snapshot.paramMap.get('month'));
+        let year = parseInt(this.route.snapshot.paramMap.get('year'));
+        month = month + 1;
+        if (month === 12) {
+            month = 0;
+            year = year + 1;
+        }
+        this.router.navigateByUrl('/', { skipLocationChange: true })
+            .then(() => this.router.navigate(['dashboard','monthview', year, month]));
+    }
 
+    prevMonth() {
+        let month = parseInt(this.route.snapshot.paramMap.get('month'));
+        let year = parseInt(this.route.snapshot.paramMap.get('year'));
+        month = month - 1;
+        if (month < 0) {
+            month = 11;
+            year = year - 1;
+        }
+        this.router.navigateByUrl('/', { skipLocationChange: true })
+            .then(() => this.router.navigate(['dashboard', 'monthview', year, month]));
+    }
   }
 
   
