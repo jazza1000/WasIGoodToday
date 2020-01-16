@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class NavMenuComponent implements OnInit{
     user$: Observable<User>;
-  isExpanded = false;
+    isExpanded = false;
+    readyToShow = false;
     constructor(private userService: UserService, private router: Router) {
         //TODO get auth user as a subject and login
     }

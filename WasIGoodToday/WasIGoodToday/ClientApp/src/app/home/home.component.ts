@@ -5,4 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
+    goalSelect = false;
+    readyToShow = false;
+
+    createGoal() {
+        this.goalSelect = true;
+    }
+
+    addGoal(goal: string) {
+        alert(goal);
+    }
 }

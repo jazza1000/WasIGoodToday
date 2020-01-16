@@ -24,3 +24,4 @@ obj
 *.cache
 *.dll
 *.pdb
+/WasIGoodToday/.vs/WasIGoodToday/v16

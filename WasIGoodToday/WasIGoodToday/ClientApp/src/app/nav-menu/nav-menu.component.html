@@ -27,6 +27,9 @@
               <li class="nav-item" [routerLinkActive]='["link-active"]'>
                   <a class="nav-link text-dark" [routerLink]='["/statistics"]'>Statistics</a>
               </li>
+              <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="readyToShow">
+                  <a class="nav-link text-dark" [routerLink]='["/notifications"]'>Notifications</a>
+              </li>
           </ul>
       </div>
     </div>

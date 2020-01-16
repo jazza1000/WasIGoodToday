@@ -1,1 +1,10 @@
 <h1>Were <strong>you</strong> good today?</h1>
+<p></p>
+<div *ngIf="readyToShow">
+    <button (click)="createGoal()">Create Goal</button><!--you can only have one goal, this shouldn't be visible if you have it already-->
+    <div *ngIf="goalSelect">
+        <label for="goal">Select Goal</label>
+        <input type="text" #goal />
+        <button (click)="addGoal(goal.value)">Add</button>
+    </div>
+</div>

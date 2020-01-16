@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Services;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using MonthData = Data.Month;
 using MonthDomain = Model.Month;
@@ -31,6 +32,9 @@ namespace WasIGoodToday.Services
 
         public async Task UpsertMonth(MonthDomain monthDomain)
         {
+            var days = monthDomain.Weeks.SelectMany(x => x.Days);
+            if (days.All(x => x.GoodOrNot == 0)) //bug where empty months overwrite data
+                return;
             MonthData month = monthDomain.ToData();
             await m_DataProvider.Upsert(month, x => x.Year == month.Year && x.Name == month.Name );
         }
